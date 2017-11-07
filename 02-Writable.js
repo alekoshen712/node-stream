@@ -6,7 +6,9 @@ let writable1 = fs.createWriteStream('./music.txt')
 // readable1.pipe(writable1)
 
 readable1.on('data', function (data) {
- // 如果内部缓冲区的大小小于创建流时设定的 highWaterMark 阈值,函数将返回true,如果返回值为false,应该停止向流中写入数据(此例子中是将可读流变为paused,即停止生产数据),直到 drain 事件被触发
+  // 如果内部缓冲区的大小小于创建流时设定的 highWaterMark 阈值,
+  // writable.writer 函数将返回true,
+  // 如果返回值为false,应该停止向流中写入数据(此例子中是将可读流变为paused,即停止生产数据),直到 drain 事件被触发
   if (false === writable1.write(data)) {
     readable.pause()
   }
